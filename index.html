@@ -295,7 +295,7 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 20px;
             margin-top: 40px;
         }
         
@@ -303,7 +303,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 15px 35px;
+            padding: 15px 30px;
             background: linear-gradient(to right, #42a5f5, #1565c0);
             color: white;
             text-decoration: none;
@@ -314,6 +314,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            min-width: 200px;
         }
         
         .btn:before {
@@ -348,6 +349,15 @@
             font-size: 20px;
             position: relative;
             z-index: 2;
+        }
+        
+        /* Новая кнопка Телеграм-канала */
+        .btn-telegram {
+            background: linear-gradient(to right, #2AABEE, #229ED9);
+        }
+        
+        .btn-telegram:before {
+            background: linear-gradient(to right, #229ED9, #2AABEE);
         }
         
         footer {
@@ -506,6 +516,11 @@
             <a href="https://t.me/tearsofhappinessrobot" class="btn pulse">
                 <i class="fab fa-telegram"></i>
                 <span>Наш Бот</span>
+            </a>
+            <!-- Новая кнопка Телеграм-канала -->
+            <a href="https://t.me/sofhapiness" class="btn btn-telegram">
+                <i class="fab fa-telegram"></i>
+                <span>Телеграм-канал</span>
             </a>
         </div>
     </div>
