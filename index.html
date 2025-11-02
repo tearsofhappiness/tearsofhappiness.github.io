@@ -3,142 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Экономия времени собеседника</title>
+    <title>Умное общение - Экономьте время собеседника</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            min-height: 100vh;
-            padding: 20px;
+            color: #2d3748;
             line-height: 1.6;
+            min-height: 100vh;
         }
-        
+
         .container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
-        
+
         .header {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
             color: white;
-            padding: 30px 20px;
+            padding: 50px 40px;
             text-align: center;
         }
-        
-        .header h1 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 10px;
+
+        .logo {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        
+
+        .tagline {
+            font-size: 1.4em;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
         .content {
-            padding: 30px;
+            padding: 50px 40px;
         }
-        
+
         .intro-text {
             text-align: center;
-            margin-bottom: 30px;
-            color: #555;
-            font-size: 16px;
+            font-size: 1.2em;
+            color: #4a5568;
+            margin-bottom: 50px;
+            line-height: 1.8;
         }
-        
-        .bad-example, .good-example {
-            margin-bottom: 40px;
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
         }
-        
+
+        .example {
+            background: #f7fafc;
+            border-radius: 16px;
+            padding: 25px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .example.bad {
+            border-color: #fc8181;
+        }
+
+        .example.good {
+            border-color: #48bb78;
+        }
+
         .example-header {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
+            font-size: 1.3em;
             font-weight: 600;
-            font-size: 18px;
         }
-        
-        .cross {
-            color: #ff6b6b;
-            font-size: 24px;
-            margin-right: 10px;
-            font-weight: bold;
+
+        .icon {
+            font-size: 1.5em;
+            margin-right: 12px;
         }
-        
-        .check {
-            color: #00d2a0;
-            font-size: 24px;
-            margin-right: 10px;
-            font-weight: bold;
+
+        .bad .icon {
+            color: #e53e3e;
         }
-        
-        .chat-container {
-            background: #f8f9fa;
-            border-radius: 15px;
+
+        .good .icon {
+            color: #38a169;
+        }
+
+        .chat-window {
+            background: white;
+            border-radius: 12px;
             padding: 20px;
-            border: 2px solid #e9ecef;
+            border: 1px solid #cbd5e0;
         }
-        
+
         .message {
             max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            margin-bottom: 10px;
-            position: relative;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.4;
         }
-        
+
         .message-them {
-            background: #e9ecef;
-            color: #333;
-            border-bottom-left-radius: 5px;
-            align-self: flex-start;
+            background: #edf2f7;
+            color: #2d3748;
+            border-bottom-left-radius: 6px;
         }
-        
+
         .message-you {
-            background: #007bff;
+            background: #4f46e5;
             color: white;
-            border-bottom-right-radius: 5px;
-            align-self: flex-end;
+            border-bottom-right-radius: 6px;
             margin-left: auto;
+            text-align: right;
         }
-        
+
         .typing-indicator {
             display: flex;
             align-items: center;
-            color: #6c757d;
+            color: #718096;
             font-size: 14px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
-        
+
         .typing-dots {
             display: flex;
-            margin-left: 8px;
+            margin-left: 10px;
         }
-        
+
         .typing-dot {
             width: 6px;
             height: 6px;
-            background: #6c757d;
+            background: #718096;
             border-radius: 50%;
-            margin: 0 2px;
+            margin: 0 3px;
             animation: typing 1.4s infinite;
         }
-        
+
         .typing-dot:nth-child(2) {
             animation-delay: 0.2s;
         }
-        
+
         .typing-dot:nth-child(3) {
             animation-delay: 0.4s;
         }
-        
+
         @keyframes typing {
             0%, 60%, 100% {
                 transform: translateY(0);
@@ -149,193 +177,200 @@
                 opacity: 1;
             }
         }
-        
-        .conclusion {
-            background: #e8f5e8;
-            border: 2px solid #00d2a0;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
+
+        .principles {
+            background: #ebf8ff;
+            border: 2px solid #90cdf4;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px 0;
         }
-        
-        .conclusion h3 {
-            color: #2d5016;
-            margin-bottom: 15px;
+
+        .principles h3 {
+            color: #2b6cb0;
+            margin-bottom: 20px;
             text-align: center;
-            font-size: 20px;
+            font-size: 1.4em;
         }
-        
-        .conclusion p {
-            font-size: 16px;
-            color: #2d5016;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .conclusion ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .conclusion li {
-            margin-bottom: 8px;
-            color: #2d5016;
-        }
-        
-        .tips-section {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 25px 0;
-        }
-        
-        .tips-section h3 {
-            color: #856404;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 20px;
-        }
-        
-        .tips-grid {
+
+        .principles-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            gap: 20px;
         }
-        
-        .tip-card {
-            background: white;
+
+        .principle {
+            text-align: center;
             padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #ffc107;
         }
-        
-        .tip-card h4 {
-            color: #856404;
+
+        .principle-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .principle h4 {
+            color: #2d3748;
             margin-bottom: 8px;
-            font-size: 16px;
+            font-size: 1.1em;
         }
-        
-        .tip-card p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.5;
+
+        .principle p {
+            color: #4a5568;
+            font-size: 0.95em;
         }
-        
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #fed7e2, #e9d8fd);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+        }
+
+        .cta-title {
+            font-size: 1.8em;
+            color: #702459;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .cta-text {
+            font-size: 1.1em;
+            color: #553c9a;
+            line-height: 1.7;
+        }
+
         .footer {
             text-align: center;
-            padding: 20px;
-            border-top: 1px solid #e9ecef;
-            color: #6c757d;
-            font-size: 14px;
+            padding: 30px 20px;
+            color: #718096;
+            font-size: 0.95em;
+            border-top: 1px solid #e2e8f0;
         }
-        
+
         .footer a {
-            color: #007bff;
+            color: #4f46e5;
             text-decoration: none;
+            font-weight: 500;
         }
-        
+
         .footer a:hover {
             text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 40px 25px;
+            }
+            
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .logo {
+                font-size: 2.8em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Экономия времени собеседника</h1>
-        </div>
-        
-        <div class="content">
-            <div class="intro-text">
-                <p>Уважаемое время собеседника - это проявление уважения к человеку и забота о его продуктивности</p>
+        <div class="main-card">
+            <div class="header">
+                <div class="logo">💬 Умное общение</div>
+                <div class="tagline">Экономьте время - общайтесь эффективно</div>
             </div>
-            
-            <div class="bad-example">
-                <div class="example-header">
-                    <div class="cross">✕</div>
-                    Как НЕ надо писать собеседнику:
+
+            <div class="content">
+                <div class="intro-text">
+                    Каждое сообщение "Привет" без продолжения - это украденная минута жизни вашего собеседника. 
+                    Учитесь общаться уважительно и продуктивно.
                 </div>
-                
-                <div class="chat-container">
-                    <div class="message message-them">
-                        Привет
+
+                <div class="examples-grid">
+                    <div class="example bad">
+                        <div class="example-header">
+                            <div class="icon">❌</div>
+                            Как НЕ стоит писать
+                        </div>
+                        <div class="chat-window">
+                            <div class="message message-them">
+                                Привет
+                            </div>
+                            <div class="message message-you">
+                                Привет
+                            </div>
+                            <div class="typing-indicator">
+                                Собеседник печатает...
+                                <div class="typing-dots">
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="message message-you">
-                        Привет
-                    </div>
-                    <div class="typing-indicator">
-                        Собеседник печатает сообщение...
-                        <div class="typing-dots">
-                            <div class="typing-dot"></div>
-                            <div class="typing-dot"></div>
-                            <div class="typing-dot"></div>
+
+                    <div class="example good">
+                        <div class="example-header">
+                            <div class="icon">✅</div>
+                            Как стоит писать
+                        </div>
+                        <div class="chat-window">
+                            <div class="message message-them">
+                                Привет! Мне нужна помощь с проектом - можешь посмотреть мой код?
+                            </div>
+                            <div class="message message-you">
+                                Конечно, скидывай ссылку
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="good-example">
-                <div class="example-header">
-                    <div class="check">✓</div>
-                    Как надо писать собеседнику:
+
+                <div class="principles">
+                    <h3>🎯 Принципы эффективного общения</h3>
+                    <div class="principles-list">
+                        <div class="principle">
+                            <div class="principle-icon">⏱️</div>
+                            <h4>Уважайте время</h4>
+                            <p>Цените время собеседника - сразу переходите к сути</p>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">💡</div>
+                            <h4>Будьте конкретны</h4>
+                            <p>Четко формулируйте вопрос или просьбу</p>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">🤝</div>
+                            <h4>Проявляйте уважение</h4>
+                            <p>Показывайте, что цените занятость человека</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="chat-container">
-                    <div class="message message-them">
-                        Привет, вы что-то мне, я что-то вам
-                    </div>
-                    <div class="message message-you">
-                        Хорошо
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tips-section">
-                <h3>💡 Почему важно экономить время собеседника?</h3>
-                <div class="tips-grid">
-                    <div class="tip-card">
-                        <h4>⏱️ Уважение к времени</h4>
-                        <p>Каждая минута собеседника имеет ценность. Не заставляйте его ждать и тратить время на уточнения</p>
-                    </div>
-                    <div class="tip-card">
-                        <h4>🚀 Эффективность общения</h4>
-                        <p>Полные сообщения позволяют быстрее понять суть и принять решение</p>
-                    </div>
-                    <div class="tip-card">
-                        <h4>🤝 Профессионализм</h4>
-                        <p>Умение четко излагать мысли показывает ваш уровень компетентности</p>
-                    </div>
-                    <div class="tip-card">
-                        <h4>💖 Забота о комфорте</h4>
-                        <p>Собеседник не должен чувствовать себя "в подвешенном состоянии"</p>
+
+                <div class="cta-section">
+                    <div class="cta-title">Начните общаться эффективно сегодня!</div>
+                    <div class="cta-text">
+                        Помните: простое "Привет" заставляет собеседника ждать и тратить время впустую. 
+                        Всегда пишите полное сообщение с объяснением цели вашего обращения. 
+                        Это простое правило сделает ваше общение более уважительным и продуктивным.
                     </div>
                 </div>
             </div>
-            
-            <div class="conclusion">
-                <h3>🎯 Главное правило эффективного общения</h3>
-                <p><strong>Пожалуйста, экономьте время своего собеседника!</strong> Не пишите просто "привет" и не заставляйте людей гадать, что вы хотите.</p>
-                
-                <p>В современном мире, где каждый ценит свое время, особенно важно сразу доносить полную информацию. Когда вы пишете просто "привет" и ждете ответа, вы:</p>
-                
-                <ul>
-                    <li>Прерыва workflow собеседника</li>
-                    <li>Создаете ненужное напряжение</li>
-                    <li>Тратите время впустую в ожидании ответа</li>
-                    <li>Показываете неуважение к занятости человека</li>
-                </ul>
-                
-                <p><strong>Всегда полностью объясняйте, что вам нужно, в одном первом сообщении!</strong> Это простое правило сделает ваше общение более эффективным, уважительным и продуктивным для всех участников.</p>
-                
-                <p>Помните: время - самый ценный ресурс, который нельзя вернуть. Берегите время своих собеседников, и они будут благодарны вам за это!</p>
+
+            <div class="footer">
+                Сайт сделал Дмитрий Дексов на подобии <a href="https://непривет.рф" target="_blank">непривет.рф</a><br>
+                <small>Идея принадлежит оригинальному проекту, дизайн и реализация - Дмитрий Дексов</small>
             </div>
-        </div>
-        
-        <div class="footer">
-            Сайт был сделан на подобии <a href="https://непривет.рф" target="_blank">непривет.рф</a>.<br>
-            Этот сайт сделал Дмитрий Дексов
         </div>
     </div>
 </body>
